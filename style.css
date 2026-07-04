@@ -182,3 +182,12 @@ footer {
 .pub-authors {
   color: #333;
 }
+
+.institution,
+.detail {
+  display: block;
+}
+
+.detail {
+  color: #333;
+}

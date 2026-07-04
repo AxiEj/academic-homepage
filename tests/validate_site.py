@@ -99,6 +99,21 @@ def main():
         assert doi in visible_text, f"missing publication DOI: {doi}"
     assert "No public publication list yet" not in visible_text, "placeholder publication text should be removed"
 
+    experience_block_start = html.index('<section id="experience"')
+    experience_block_end = html.index("</section>", experience_block_start)
+    experience_text = " ".join(parser.text)
+    expected_experience = [
+        "2025-12 - Present Research Intern University of Pittsburgh · Dept. of Pharmaceutical Sciences Supervised by PhD Xujian Wang (Prof. Junmei Wang's Group)",
+        "2025-06 - Present Research Assistant Second Affiliated Hospital of Dalian Medical University Feng Zhang Group · Supervised by Zian Wang & Xiaotao Zhang",
+        "2023-10 - Present Research Assistant Dalian Medical University Liang Wang Group · Laboratory Animal Center",
+    ]
+    for snippet in expected_experience:
+        assert snippet in experience_text, f"missing exact experience wording: {snippet}"
+    forbidden_experience = ["2025.12.24", "Remote", "School of Pharmacy", "under Prof.", "2025.06", "2023.10"]
+    experience_html = html[experience_block_start:experience_block_end]
+    for word in forbidden_experience:
+        assert word not in experience_html, f"stale experience wording remains: {word}"
+
     for href in parser.links:
         if href.startswith(("http://", "https://", "mailto:", "#")):
             continue
