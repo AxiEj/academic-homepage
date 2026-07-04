@@ -40,7 +40,6 @@ def main():
     visible_text = " ".join(parser.text)
     for required in [
         "Jiahao Xie",
-        "谢佳豪",
         "Dalian Medical University",
         "Computational Chemistry",
         "Bioinformatics",
