@@ -32,7 +32,7 @@ def main():
     parser = SiteParser()
     parser.feed(html)
 
-    required_ids = {"about", "news", "research", "projects", "experience", "contact"}
+    required_ids = {"about", "news", "research", "experience", "publications", "contact"}
     missing = required_ids - parser.ids
     assert not missing, f"missing academic sections: {sorted(missing)}"
 
@@ -50,6 +50,32 @@ def main():
     forbidden = ["Gallery", "Music", "Quiz", "Mother", "Father", "heart failure", "心衰", "心力衰竭"]
     for word in forbidden:
         assert word not in body_text, f"non-academic/personal content leaked: {word}"
+
+    required_markup = [
+        '<main class="page"',
+        '<aside class="profile"',
+        '<article class="content"',
+        '<ul class="compact-list news-list">',
+        '<ol class="publication-list">',
+    ]
+    for snippet in required_markup:
+        assert snippet in html, f"missing plain academic homepage markup: {snippet}"
+
+    marketing_classes = ["hero", "card-grid", "card", "project-item", "quick-links", "section-intro"]
+    for class_name in marketing_classes:
+        assert f'class="{class_name}' not in html, f"marketing-style class remains: {class_name}"
+
+    css = (ROOT / "style.css").read_text(encoding="utf-8")
+    required_css = [
+        "background: #fff",
+        "max-width: 1000px",
+        "font-family: Arial, Helvetica, sans-serif",
+        "color: #1772d0",
+    ]
+    for snippet in required_css:
+        assert snippet in css, f"missing reference-like academic CSS: {snippet}"
+    for forbidden_css in ["box-shadow", "border-radius: 24px", "linear-gradient", "backdrop-filter"]:
+        assert forbidden_css not in css, f"landing-page styling remains: {forbidden_css}"
 
     for href in parser.links:
         if href.startswith(("http://", "https://", "mailto:", "#")):

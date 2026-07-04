@@ -1,6 +1,6 @@
 # Jiahao Xie Academic Homepage
 
-Standalone static academic homepage prepared outside `/home/axie/web` for GitHub Pages deployment.
+Standalone static academic homepage prepared outside `/home/axie/web` for GitHub Pages deployment. The visual style intentionally follows the common minimalist academic-homepage pattern: white background, compact profile column, blue links, simple section headings, news list, and publication list.
 
 ## Structure
 
