@@ -60,6 +60,9 @@ def main():
     for word in forbidden:
         assert word not in body_text, f"non-academic/personal content leaked: {word}"
 
+    expected_news = "2025.12 Research Intern, University of Pittsburgh, Department of Pharmaceutical Sciences, participating in the MAPLE project."
+    assert expected_news in visible_text, f"missing MAPLE project note in news: {expected_news}"
+
     required_markup = [
         '<main class="page"',
         '<aside class="profile"',
