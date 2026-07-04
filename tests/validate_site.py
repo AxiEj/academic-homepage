@@ -32,20 +32,30 @@ def main():
     parser = SiteParser()
     parser.feed(html)
 
-    required_ids = {"about", "news", "research", "experience", "publications", "contact"}
+    required_ids = {"about", "news", "research", "experience", "publications"}
     missing = required_ids - parser.ids
     assert not missing, f"missing academic sections: {sorted(missing)}"
 
     body_text = "\n".join(parser.text)
+    visible_text = " ".join(parser.text)
     for required in [
         "Jiahao Xie",
+        "谢佳豪",
         "Dalian Medical University",
         "Computational Chemistry",
         "Bioinformatics",
         "Molecular Dynamics",
+        "Email: xjhdl@dmu.edu.cn",
+        "GitHub: https://github.com/AxiEj",
         "ORCID",
     ]:
-        assert required in body_text, f"missing academic content: {required}"
+        assert required in visible_text, f"missing academic content: {required}"
+
+    profile_start = html.index('<aside class="profile"')
+    profile_end = html.index("</aside>", profile_start)
+    profile_html = html[profile_start:profile_end]
+    for required in ["Contact", "Email:", "xjhdl@dmu.edu.cn", "GitHub:", "https://github.com/AxiEj", "ORCID:", "0009-0004-2387-7021"]:
+        assert required in profile_html, f"left profile contact missing: {required}"
 
     forbidden = ["Gallery", "Music", "Quiz", "Mother", "Father", "heart failure", "心衰", "心力衰竭"]
     for word in forbidden:
@@ -76,6 +86,19 @@ def main():
         assert snippet in css, f"missing reference-like academic CSS: {snippet}"
     for forbidden_css in ["box-shadow", "border-radius: 24px", "linear-gradient", "backdrop-filter"]:
         assert forbidden_css not in css, f"landing-page styling remains: {forbidden_css}"
+
+    publications = [
+        ("Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair: Opportunities and future directions", "10.1073/pnas.2535289123"),
+        ("Host–gut microbiota interactions in health and disease: mechanisms and intervention strategies", "10.3389/fmicb.2026.1785607"),
+        ("Letter regarding HOXA9 drives lymphatic metastasis by activating the c-MYC-glycolysis-lactate axis in gastric cancer", "10.1186/s12967-026-07822-x"),
+        ("Letter to the editor: clinical translation of senolytic immunotherapy: critical considerations for SenoVax™ and beyond", "10.1186/s12967-026-07820-z"),
+        ("Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity", "10.3389/fimmu.2025.1675572"),
+        ("Combining network pharmacology, machine learning, molecular docking and molecular dynamic to explore the mechanism of Chufeng Qingpi decoction in treating schistosomiasis", "10.3389/fcimb.2024.1453529"),
+    ]
+    for title, doi in publications:
+        assert title in visible_text, f"missing publication title: {title}"
+        assert doi in visible_text, f"missing publication DOI: {doi}"
+    assert "No public publication list yet" not in visible_text, "placeholder publication text should be removed"
 
     for href in parser.links:
         if href.startswith(("http://", "https://", "mailto:", "#")):
