@@ -44,6 +44,8 @@ def main():
         "Computational Chemistry",
         "Bioinformatics",
         "Molecular Dynamics",
+        "A note to readers: I am an undergraduate student",
+        "if this page has led you to overestimate me, I apologize for the misunderstanding",
         "Email: xjhdl@dmu.edu.cn",
         "GitHub: https://github.com/AxiEj",
         "ORCID",
@@ -64,6 +66,8 @@ def main():
     assert expected_news in visible_text, f"missing MAPLE project note in news: {expected_news}"
 
     required_markup = [
+        '<button class="language-toggle"',
+        'data-language-toggle',
         '<main class="page"',
         '<aside class="profile"',
         '<article class="content"',
@@ -89,6 +93,21 @@ def main():
     for forbidden_css in ["box-shadow", "border-radius: 24px", "linear-gradient", "backdrop-filter"]:
         assert forbidden_css not in css, f"landing-page styling remains: {forbidden_css}"
 
+    bilingual_requirements = [
+        "data-i18n=",
+        "const translations =",
+        "function applyLanguage",
+        "localStorage.setItem(storageKey, current)",
+        "<strong>A note to readers:</strong>",
+        "<strong>写给读者：</strong>",
+        "同行评议原创研究论文",
+        "通信 / 评论 / 综述",
+        "负责机制图绘制和稿件返修",
+    ]
+    for snippet in bilingual_requirements:
+        assert snippet in html, f"missing bilingual language-toggle support: {snippet}"
+    assert "position: fixed" in css and ".language-toggle" in css, "language toggle should be fixed in the top-right corner"
+
     publications = [
         ("Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair: Opportunities and future directions", "10.1073/pnas.2535289123"),
         ("Host–gut microbiota interactions in health and disease: mechanisms and intervention strategies", "10.3389/fmicb.2026.1785607"),
@@ -102,13 +121,55 @@ def main():
         assert doi in visible_text, f"missing publication DOI: {doi}"
     assert "No public publication list yet" not in visible_text, "placeholder publication text should be removed"
 
+    publication_block_start = html.index('<section id="publications"')
+    publication_block_end = html.index("</section>", publication_block_start)
+    publication_html = html[publication_block_start:publication_block_end]
+    peer_heading = publication_html.index("Peer-reviewed research articles")
+    correspondence_heading = publication_html.index("Correspondence / Commentaries / Reviews")
+    original_title = "Combining network pharmacology, machine learning, molecular docking and molecular dynamic to explore the mechanism of Chufeng Qingpi decoction in treating schistosomiasis"
+    original_position = publication_html.index(original_title)
+    assert peer_heading < original_position < correspondence_heading, "original research article must be under Peer-reviewed research articles"
+    contribution_note = "Contribution: responsible for the molecular dynamics simulations in this study."
+    assert original_position < publication_html.index(contribution_note) < correspondence_heading, "MD simulation contribution note must stay with the original research article"
+    for title in [
+        "Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair",
+        "Host–gut microbiota interactions in health and disease",
+        "Letter regarding HOXA9 drives lymphatic metastasis",
+        "Letter to the editor: clinical translation of senolytic immunotherapy",
+        "Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity",
+    ]:
+        assert correspondence_heading < publication_html.index(title), f"non-original publication must be in correspondence/review section: {title}"
+    review_note = "Contribution: responsible for mechanistic figure preparation and manuscript revision."
+    for title in [
+        "Host–gut microbiota interactions in health and disease",
+        "Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity",
+    ]:
+        title_position = publication_html.index(title)
+        note_position = publication_html.index(review_note, title_position)
+        assert title_position < note_position, f"mechanistic figure/revision contribution note must stay with: {title}"
+    assert publication_html.count(review_note) == 2, "two review articles should carry the mechanistic figure/revision contribution note"
+    assert publication_html.count('<ol class="publication-list">') == 2, "publication categories should use two separate lists"
+
+    for required in [
+        "Laboratory Animal Center, Dalian Medical University",
+        "大连医科大学实验动物中心",
+        "由王栩剑博士指导",
+        "由王梓安与张晓陶指导",
+        "王亮课题组",
+    ]:
+        assert required in html, f"missing corrected bilingual experience wording: {required}"
+
+    initial_html = html[:html.index("<script>")]
+    assert "大连医科大学实验动物中心)" not in initial_html, "English/default interface should not include Chinese parenthetical for Laboratory Animal Center"
+    assert "（Laboratory Animal Center, Dalian Medical University）" not in html, "Chinese interface should not include English parenthetical for Laboratory Animal Center"
+
     experience_block_start = html.index('<section id="experience"')
     experience_block_end = html.index("</section>", experience_block_start)
     experience_text = " ".join(parser.text)
     expected_experience = [
         "2025-12 - Present Research Intern University of Pittsburgh · Dept. of Pharmaceutical Sciences Supervised by PhD Xujian Wang (Prof. Junmei Wang's Group)",
         "2025-06 - Present Research Assistant Second Affiliated Hospital of Dalian Medical University Feng Zhang Group · Supervised by Zian Wang & Xiaotao Zhang",
-        "2023-10 - Present Research Assistant Dalian Medical University Liang Wang Group · Laboratory Animal Center",
+        "2023-10 - Present Research Assistant Laboratory Animal Center, Dalian Medical University Liang Wang Group",
     ]
     for snippet in expected_experience:
         assert snippet in experience_text, f"missing exact experience wording: {snippet}"

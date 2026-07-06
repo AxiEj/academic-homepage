@@ -9,41 +9,43 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button class="language-toggle" type="button" aria-label="Switch language" data-language-toggle>中文</button>
+
   <main class="page" id="top">
     <aside class="profile" aria-label="Profile">
       <img src="assets/avatar.jpg" alt="Jiahao Xie" class="profile-photo">
       <h1>Jiahao Xie</h1>
-      <p>Undergraduate<br>Clinical Medicine</p>
-      <p>Dalian Medical University</p>
+      <p data-i18n="profile_role">Undergraduate<br>Clinical Medicine</p>
+      <p data-i18n="profile_school">Dalian Medical University</p>
 
       <div class="profile-contact" aria-label="Contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:xjhdl@dmu.edu.cn">xjhdl@dmu.edu.cn</a></p>
-        <p>GitHub: <a href="https://github.com/AxiEj" target="_blank" rel="noopener noreferrer">https://github.com/AxiEj</a></p>
-        <p>ORCID: <a href="https://orcid.org/0009-0004-2387-7021" target="_blank" rel="noopener noreferrer">0009-0004-2387-7021</a></p>
-        <p>Scopus Author ID: 59339900400</p>
+        <h2 data-i18n="contact_heading">Contact</h2>
+        <p data-i18n="contact_email">Email: <a href="mailto:xjhdl@dmu.edu.cn">xjhdl@dmu.edu.cn</a></p>
+        <p data-i18n="contact_github">GitHub: <a href="https://github.com/AxiEj" target="_blank" rel="noopener noreferrer">https://github.com/AxiEj</a></p>
+        <p data-i18n="contact_orcid">ORCID: <a href="https://orcid.org/0009-0004-2387-7021" target="_blank" rel="noopener noreferrer">0009-0004-2387-7021</a></p>
+        <p data-i18n="contact_scopus">Scopus Author ID: 59339900400</p>
       </div>
     </aside>
 
     <article class="content">
       <nav class="top-nav" aria-label="Page sections">
-        <a href="#about">About Me</a>
-        <a href="#news">News</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
+        <a href="#about" data-i18n="nav_about">About Me</a>
+        <a href="#news" data-i18n="nav_news">News</a>
+        <a href="#research" data-i18n="nav_research">Research</a>
+        <a href="#publications" data-i18n="nav_publications">Publications</a>
+        <a href="#experience" data-i18n="nav_experience">Experience</a>
+        <a href="#education" data-i18n="nav_education">Education</a>
       </nav>
 
       <section id="about">
-        <h2>About Me</h2>
-        <p>
+        <h2 data-i18n="about_heading">About Me</h2>
+        <p data-i18n="about_p1">
           I am Jiahao Xie, an undergraduate student in Clinical Medicine at
           Dalian Medical University. My current academic interests lie at the
           intersection of computational chemistry, bioinformatics, molecular
           modeling, and translational biomedical research.
         </p>
-        <p>
+        <p data-i18n="about_p2">
           I work with molecular dynamics, quantum chemistry, network pharmacology,
           network toxicology, Mendelian randomization, GBD database analysis,
           WGCNA, differential analysis, KEGG/GO enrichment analysis, molecular
@@ -52,102 +54,113 @@
           passage, cryopreservation, QPCR, CCK8 assays, and a small part of
           animal-experiment support.
         </p>
+        <p class="reader-note" data-i18n="reader_note">
+          <strong>A note to readers:</strong> I am an undergraduate student. With no false modesty, I do not believe that my depth of thought, research experience, or experimental skills exceed those of the person reading this profile. Thank you for your understanding; if this page has led you to overestimate me, I apologize for the misunderstanding.
+        </p>
       </section>
 
       <section id="news">
-        <h2>News</h2>
+        <h2 data-i18n="news_heading">News</h2>
         <ul class="compact-list news-list">
-          <li><span class="date">2026.07</span> This standalone academic homepage was prepared for GitHub Pages deployment.</li>
-          <li><span class="date">2025.12</span> Research Intern, University of Pittsburgh, Department of Pharmaceutical Sciences, participating in the MAPLE project.</li>
-          <li><span class="date">2025.06</span> Research Assistant, Second Affiliated Hospital of Dalian Medical University.</li>
-          <li><span class="date">2023.10</span> Research Assistant, Liang Wang Group, Laboratory Animal Center, Dalian Medical University.</li>
+          <li data-i18n="news_202607"><span class="date">2026.07</span> This standalone academic homepage was prepared for GitHub Pages deployment.</li>
+          <li data-i18n="news_202512"><span class="date">2025.12</span> Research Intern, University of Pittsburgh, Department of Pharmaceutical Sciences, participating in the MAPLE project.</li>
+          <li data-i18n="news_202506"><span class="date">2025.06</span> Research Assistant, Second Affiliated Hospital of Dalian Medical University.</li>
+          <li data-i18n="news_202310"><span class="date">2023.10</span> Research Assistant, Liang Wang Group, Laboratory Animal Center, Dalian Medical University.</li>
         </ul>
       </section>
 
       <section id="research">
-        <h2>Research</h2>
-        <p>
+        <h2 data-i18n="research_heading">Research</h2>
+        <p data-i18n="research_intro">
           My research aims to use computation and biomedical data analysis to form
           mechanistic hypotheses that can be evaluated experimentally.
         </p>
         <ul class="compact-list">
-          <li><strong>Computational Chemistry:</strong> Molecular Dynamics with GROMACS; quantum chemistry workflows with ORCA and Gaussian; molecular analysis with Multiwfn, sobTop, and Molclus.</li>
-          <li><strong>Bioinformatics:</strong> Network pharmacology, network toxicology, Mendelian randomization, GBD database analysis, WGCNA, differential analysis, KEGG/GO enrichment analysis, molecular docking, and machine-learning-assisted target screening.</li>
-          <li><strong>Experimental Validation:</strong> Cell culture medium change, passage, cryopreservation, QPCR, CCK8 assays, and limited animal-experiment support.</li>
-          <li><strong>Scientific Computing:</strong> Reproducible workflows for molecular modeling and computational chemistry practice, including work connected to <a href="https://github.com/ClickFF/MAPLE" target="_blank" rel="noopener noreferrer">MAPLE</a>.</li>
+          <li data-i18n="research_computational"><strong>Computational Chemistry:</strong> Molecular Dynamics with GROMACS; quantum chemistry workflows with ORCA and Gaussian; molecular analysis with Multiwfn, sobTop, and Molclus.</li>
+          <li data-i18n="research_bioinformatics"><strong>Bioinformatics:</strong> Network pharmacology, network toxicology, Mendelian randomization, GBD database analysis, WGCNA, differential analysis, KEGG/GO enrichment analysis, molecular docking, and machine-learning-assisted target screening.</li>
+          <li data-i18n="research_experimental"><strong>Experimental Validation:</strong> Cell culture medium change, passage, cryopreservation, QPCR, CCK8 assays, and limited animal-experiment support.</li>
+          <li data-i18n="research_computing"><strong>Scientific Computing:</strong> Reproducible workflows for molecular modeling and computational chemistry practice, including work connected to <a href="https://github.com/ClickFF/MAPLE" target="_blank" rel="noopener noreferrer">MAPLE</a>.</li>
         </ul>
       </section>
 
       <section id="publications">
-        <h2>Publications</h2>
+        <h2 data-i18n="publications_heading">Publications</h2>
+        <h3 data-i18n="publications_research_heading">Peer-reviewed research articles</h3>
         <ol class="publication-list">
           <li>
-            <span class="pub-title">Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair: Opportunities and future directions.</span>
-            <span class="pub-venue"><em>Proceedings of the National Academy of Sciences</em>, 2026-06-16.</span>
-            <span class="pub-authors">Contributors: Zian Wang; <strong>Jiahao Xie</strong>; Shujing Liu; Mei Han; Liang Wang.</span>
+            <span class="pub-title" data-i18n="pub_cqd_title">Combining network pharmacology, machine learning, molecular docking and molecular dynamic to explore the mechanism of Chufeng Qingpi decoction in treating schistosomiasis.</span>
+            <span class="pub-venue" data-i18n="pub_cqd_venue"><em>Frontiers in Cellular and Infection Microbiology</em>, 2024-09-06.</span>
+            <span class="pub-authors" data-i18n="pub_cqd_authors">Contributors: Minglu Liu; Yuxin Wang; Wen Deng; <strong>Jiahao Xie</strong>; Yanyao He; Liang Wang; Jianbin Zhang; Ming Cui.</span>
+            <span class="pub-links">DOI: <a href="https://doi.org/10.3389/fcimb.2024.1453529" target="_blank" rel="noopener noreferrer">10.3389/fcimb.2024.1453529</a></span>
+            <span class="pub-note" data-i18n="pub_cqd_note">Contribution: responsible for the molecular dynamics simulations in this study.</span>
+          </li>
+        </ol>
+
+        <h3 data-i18n="publications_reviews_heading">Correspondence / Commentaries / Reviews</h3>
+        <ol class="publication-list">
+          <li>
+            <span class="pub-title" data-i18n="pub_pnas_title">Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair: Opportunities and future directions.</span>
+            <span class="pub-venue" data-i18n="pub_pnas_venue"><em>Proceedings of the National Academy of Sciences</em>, 2026-06-16.</span>
+            <span class="pub-authors" data-i18n="pub_pnas_authors">Contributors: Zian Wang; <strong>Jiahao Xie</strong>; Shujing Liu; Mei Han; Liang Wang.</span>
             <span class="pub-links">DOI: <a href="https://doi.org/10.1073/pnas.2535289123" target="_blank" rel="noopener noreferrer">10.1073/pnas.2535289123</a></span>
           </li>
           <li>
-            <span class="pub-title">Host–gut microbiota interactions in health and disease: mechanisms and intervention strategies.</span>
-            <span class="pub-venue"><em>Frontiers in Microbiology</em>, 2026-03-10.</span>
-            <span class="pub-authors">Contributors: Yu Han; Zian Wang; <strong>Jiahao Xie</strong>; Guangdi Yang; Monong Su; Siqi Wang; Mengxin Yang; Huiyang Yu; Minghua Li; Liang Wang et al.</span>
+            <span class="pub-title" data-i18n="pub_microbiota_title">Host–gut microbiota interactions in health and disease: mechanisms and intervention strategies.</span>
+            <span class="pub-venue" data-i18n="pub_microbiota_venue"><em>Frontiers in Microbiology</em>, 2026-03-10.</span>
+            <span class="pub-authors" data-i18n="pub_microbiota_authors">Contributors: Yu Han; Zian Wang; <strong>Jiahao Xie</strong>; Guangdi Yang; Monong Su; Siqi Wang; Mengxin Yang; Huiyang Yu; Minghua Li; Liang Wang et al.</span>
             <span class="pub-links">DOI: <a href="https://doi.org/10.3389/fmicb.2026.1785607" target="_blank" rel="noopener noreferrer">10.3389/fmicb.2026.1785607</a></span>
+            <span class="pub-note" data-i18n="pub_review_note">Contribution: responsible for mechanistic figure preparation and manuscript revision.</span>
           </li>
           <li>
-            <span class="pub-title">Letter regarding HOXA9 drives lymphatic metastasis by activating the c-MYC-glycolysis-lactate axis in gastric cancer.</span>
-            <span class="pub-venue"><em>Journal of Translational Medicine</em>, 2026-02-13.</span>
-            <span class="pub-authors">Contributors: Xiaotao Zhang; Zian Wang; <strong>Jiahao Xie</strong>; Feng Zhang.</span>
+            <span class="pub-title" data-i18n="pub_hoxa9_title">Letter regarding HOXA9 drives lymphatic metastasis by activating the c-MYC-glycolysis-lactate axis in gastric cancer.</span>
+            <span class="pub-venue" data-i18n="pub_hoxa9_venue"><em>Journal of Translational Medicine</em>, 2026-02-13.</span>
+            <span class="pub-authors" data-i18n="pub_hoxa9_authors">Contributors: Xiaotao Zhang; Zian Wang; <strong>Jiahao Xie</strong>; Feng Zhang.</span>
             <span class="pub-links">DOI: <a href="https://doi.org/10.1186/s12967-026-07822-x" target="_blank" rel="noopener noreferrer">10.1186/s12967-026-07822-x</a></span>
           </li>
           <li>
-            <span class="pub-title">Letter to the editor: clinical translation of senolytic immunotherapy: critical considerations for SenoVax™ and beyond.</span>
-            <span class="pub-venue"><em>Journal of Translational Medicine</em>, 2026-02-13.</span>
-            <span class="pub-authors">Contributors: <strong>Jiahao Xie</strong>; Zian Wang; Liang Wang; Ming Cui.</span>
+            <span class="pub-title" data-i18n="pub_senovax_title">Letter to the editor: clinical translation of senolytic immunotherapy: critical considerations for SenoVax™ and beyond.</span>
+            <span class="pub-venue" data-i18n="pub_senovax_venue"><em>Journal of Translational Medicine</em>, 2026-02-13.</span>
+            <span class="pub-authors" data-i18n="pub_senovax_authors">Contributors: <strong>Jiahao Xie</strong>; Zian Wang; Liang Wang; Ming Cui.</span>
             <span class="pub-links">DOI: <a href="https://doi.org/10.1186/s12967-026-07820-z" target="_blank" rel="noopener noreferrer">10.1186/s12967-026-07820-z</a></span>
           </li>
           <li>
-            <span class="pub-title">Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity.</span>
-            <span class="pub-venue"><em>Frontiers in Immunology</em>, 2025-09-25.</span>
-            <span class="pub-authors">Contributors: Zian Wang; <strong>Jiahao Xie</strong>; Qindan Li; Yiheng Liu; Xiaotao Zhang; Ergen Mi; Liang Wang; Lingyu Wang; Feng Zhang.</span>
+            <span class="pub-title" data-i18n="pub_tgev_title">Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity.</span>
+            <span class="pub-venue" data-i18n="pub_tgev_venue"><em>Frontiers in Immunology</em>, 2025-09-25.</span>
+            <span class="pub-authors" data-i18n="pub_tgev_authors">Contributors: Zian Wang; <strong>Jiahao Xie</strong>; Qindan Li; Yiheng Liu; Xiaotao Zhang; Ergen Mi; Liang Wang; Lingyu Wang; Feng Zhang.</span>
             <span class="pub-links">DOI: <a href="https://doi.org/10.3389/fimmu.2025.1675572" target="_blank" rel="noopener noreferrer">10.3389/fimmu.2025.1675572</a></span>
-          </li>
-          <li>
-            <span class="pub-title">Combining network pharmacology, machine learning, molecular docking and molecular dynamic to explore the mechanism of Chufeng Qingpi decoction in treating schistosomiasis.</span>
-            <span class="pub-venue"><em>Frontiers in Cellular and Infection Microbiology</em>, 2024-09-06.</span>
-            <span class="pub-authors">Contributors: Minglu Liu; Yuxin Wang; Wen Deng; <strong>Jiahao Xie</strong>; Yanyao He; Liang Wang; Jianbin Zhang; Ming Cui.</span>
-            <span class="pub-links">DOI: <a href="https://doi.org/10.3389/fcimb.2024.1453529" target="_blank" rel="noopener noreferrer">10.3389/fcimb.2024.1453529</a></span>
+            <span class="pub-note" data-i18n="pub_review_note">Contribution: responsible for mechanistic figure preparation and manuscript revision.</span>
           </li>
         </ol>
       </section>
 
       <section id="experience">
-        <h2>Experience</h2>
+        <h2 data-i18n="experience_heading">Experience</h2>
         <ul class="compact-list">
           <li>
-            <span class="date">2025-12 - Present</span>
-            <strong>Research Intern</strong>
-            <span class="institution">University of Pittsburgh · Dept. of Pharmaceutical Sciences</span>
-            <span class="detail">Supervised by PhD Xujian Wang (Prof. Junmei Wang's Group)</span>
+            <span class="date" data-i18n="exp_pitt_date">2025-12 - Present</span>
+            <strong data-i18n="exp_pitt_role">Research Intern</strong>
+            <span class="institution" data-i18n="exp_pitt_inst">University of Pittsburgh · Dept. of Pharmaceutical Sciences</span>
+            <span class="detail" data-i18n="exp_pitt_detail">Supervised by PhD Xujian Wang (Prof. Junmei Wang's Group)</span>
           </li>
           <li>
-            <span class="date">2025-06 - Present</span>
-            <strong>Research Assistant</strong>
-            <span class="institution">Second Affiliated Hospital of Dalian Medical University</span>
-            <span class="detail">Feng Zhang Group · Supervised by Zian Wang &amp; Xiaotao Zhang</span>
+            <span class="date" data-i18n="exp_hospital_date">2025-06 - Present</span>
+            <strong data-i18n="exp_hospital_role">Research Assistant</strong>
+            <span class="institution" data-i18n="exp_hospital_inst">Second Affiliated Hospital of Dalian Medical University</span>
+            <span class="detail" data-i18n="exp_hospital_detail">Feng Zhang Group · Supervised by Zian Wang &amp; Xiaotao Zhang</span>
           </li>
           <li>
-            <span class="date">2023-10 - Present</span>
-            <strong>Research Assistant</strong>
-            <span class="institution">Dalian Medical University</span>
-            <span class="detail">Liang Wang Group · Laboratory Animal Center</span>
+            <span class="date" data-i18n="exp_lwang_date">2023-10 - Present</span>
+            <strong data-i18n="exp_lwang_role">Research Assistant</strong>
+            <span class="institution" data-i18n="exp_lwang_inst">Laboratory Animal Center, Dalian Medical University</span>
+            <span class="detail" data-i18n="exp_lwang_detail">Liang Wang Group</span>
           </li>
         </ul>
       </section>
 
       <section id="education">
-        <h2>Education</h2>
+        <h2 data-i18n="education_heading">Education</h2>
         <ul class="compact-list">
-          <li>
+          <li data-i18n="education_item">
             <span class="date">Present</span>
             <strong>Dalian Medical University</strong>, Undergraduate in Clinical Medicine.
           </li>
@@ -155,9 +168,203 @@
       </section>
 
       <footer>
-        <p>Last updated: July 2026.</p>
+        <p data-i18n="footer_updated">Last updated: July 2026.</p>
       </footer>
     </article>
   </main>
+
+  <script>
+    const translations = {
+      en: {
+        documentTitle: "Jiahao Xie",
+        description: "Academic homepage of Jiahao Xie, undergraduate in Clinical Medicine at Dalian Medical University.",
+        toggleLabel: "中文",
+        toggleAria: "Switch to Chinese",
+        profile_role: "Undergraduate<br>Clinical Medicine",
+        profile_school: "Dalian Medical University",
+        contact_heading: "Contact",
+        contact_email: 'Email: <a href="mailto:xjhdl@dmu.edu.cn">xjhdl@dmu.edu.cn</a>',
+        contact_github: 'GitHub: <a href="https://github.com/AxiEj" target="_blank" rel="noopener noreferrer">https://github.com/AxiEj</a>',
+        contact_orcid: 'ORCID: <a href="https://orcid.org/0009-0004-2387-7021" target="_blank" rel="noopener noreferrer">0009-0004-2387-7021</a>',
+        contact_scopus: "Scopus Author ID: 59339900400",
+        nav_about: "About Me",
+        nav_news: "News",
+        nav_research: "Research",
+        nav_publications: "Publications",
+        nav_experience: "Experience",
+        nav_education: "Education",
+        about_heading: "About Me",
+        about_p1: "I am Jiahao Xie, an undergraduate student in Clinical Medicine at Dalian Medical University. My current academic interests lie at the intersection of computational chemistry, bioinformatics, molecular modeling, and translational biomedical research.",
+        about_p2: "I work with molecular dynamics, quantum chemistry, network pharmacology, network toxicology, Mendelian randomization, GBD database analysis, WGCNA, differential analysis, KEGG/GO enrichment analysis, molecular docking, and machine-learning-assisted target screening. I am also involved in wet-lab work including cell culture, medium change, passage, cryopreservation, QPCR, CCK8 assays, and a small part of animal-experiment support.",
+        reader_note: "<strong>A note to readers:</strong> I am an undergraduate student. With no false modesty, I do not believe that my depth of thought, research experience, or experimental skills exceed those of the person reading this profile. Thank you for your understanding; if this page has led you to overestimate me, I apologize for the misunderstanding.",
+        news_heading: "News",
+        news_202607: '<span class="date">2026.07</span> This standalone academic homepage was prepared for GitHub Pages deployment.',
+        news_202512: '<span class="date">2025.12</span> Research Intern, University of Pittsburgh, Department of Pharmaceutical Sciences, participating in the MAPLE project.',
+        news_202506: '<span class="date">2025.06</span> Research Assistant, Second Affiliated Hospital of Dalian Medical University.',
+        news_202310: '<span class="date">2023.10</span> Research Assistant, Liang Wang Group, Laboratory Animal Center, Dalian Medical University.',
+        research_heading: "Research",
+        research_intro: "My research aims to use computation and biomedical data analysis to form mechanistic hypotheses that can be evaluated experimentally.",
+        research_computational: "<strong>Computational Chemistry:</strong> Molecular Dynamics with GROMACS; quantum chemistry workflows with ORCA and Gaussian; molecular analysis with Multiwfn, sobTop, and Molclus.",
+        research_bioinformatics: "<strong>Bioinformatics:</strong> Network pharmacology, network toxicology, Mendelian randomization, GBD database analysis, WGCNA, differential analysis, KEGG/GO enrichment analysis, molecular docking, and machine-learning-assisted target screening.",
+        research_experimental: "<strong>Experimental Validation:</strong> Cell culture medium change, passage, cryopreservation, QPCR, CCK8 assays, and limited animal-experiment support.",
+        research_computing: '<strong>Scientific Computing:</strong> Reproducible workflows for molecular modeling and computational chemistry practice, including work connected to <a href="https://github.com/ClickFF/MAPLE" target="_blank" rel="noopener noreferrer">MAPLE</a>.',
+        publications_heading: "Publications",
+        publications_research_heading: "Peer-reviewed research articles",
+        publications_reviews_heading: "Correspondence / Commentaries / Reviews",
+        pub_cqd_title: "Combining network pharmacology, machine learning, molecular docking and molecular dynamic to explore the mechanism of Chufeng Qingpi decoction in treating schistosomiasis.",
+        pub_cqd_venue: "<em>Frontiers in Cellular and Infection Microbiology</em>, 2024-09-06.",
+        pub_cqd_authors: "Contributors: Minglu Liu; Yuxin Wang; Wen Deng; <strong>Jiahao Xie</strong>; Yanyao He; Liang Wang; Jianbin Zhang; Ming Cui.",
+        pub_cqd_note: "Contribution: responsible for the molecular dynamics simulations in this study.",
+        pub_pnas_title: "Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair: Opportunities and future directions.",
+        pub_pnas_venue: "<em>Proceedings of the National Academy of Sciences</em>, 2026-06-16.",
+        pub_pnas_authors: "Contributors: Zian Wang; <strong>Jiahao Xie</strong>; Shujing Liu; Mei Han; Liang Wang.",
+        pub_microbiota_title: "Host–gut microbiota interactions in health and disease: mechanisms and intervention strategies.",
+        pub_microbiota_venue: "<em>Frontiers in Microbiology</em>, 2026-03-10.",
+        pub_microbiota_authors: "Contributors: Yu Han; Zian Wang; <strong>Jiahao Xie</strong>; Guangdi Yang; Monong Su; Siqi Wang; Mengxin Yang; Huiyang Yu; Minghua Li; Liang Wang et al.",
+        pub_hoxa9_title: "Letter regarding HOXA9 drives lymphatic metastasis by activating the c-MYC-glycolysis-lactate axis in gastric cancer.",
+        pub_hoxa9_venue: "<em>Journal of Translational Medicine</em>, 2026-02-13.",
+        pub_hoxa9_authors: "Contributors: Xiaotao Zhang; Zian Wang; <strong>Jiahao Xie</strong>; Feng Zhang.",
+        pub_senovax_title: "Letter to the editor: clinical translation of senolytic immunotherapy: critical considerations for SenoVax™ and beyond.",
+        pub_senovax_venue: "<em>Journal of Translational Medicine</em>, 2026-02-13.",
+        pub_senovax_authors: "Contributors: <strong>Jiahao Xie</strong>; Zian Wang; Liang Wang; Ming Cui.",
+        pub_tgev_title: "Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity.",
+        pub_tgev_venue: "<em>Frontiers in Immunology</em>, 2025-09-25.",
+        pub_tgev_authors: "Contributors: Zian Wang; <strong>Jiahao Xie</strong>; Qindan Li; Yiheng Liu; Xiaotao Zhang; Ergen Mi; Liang Wang; Lingyu Wang; Feng Zhang.",
+        pub_review_note: "Contribution: responsible for mechanistic figure preparation and manuscript revision.",
+        experience_heading: "Experience",
+        exp_pitt_date: "2025-12 - Present",
+        exp_pitt_role: "Research Intern",
+        exp_pitt_inst: "University of Pittsburgh · Dept. of Pharmaceutical Sciences",
+        exp_pitt_detail: "Supervised by PhD Xujian Wang (Prof. Junmei Wang's Group)",
+        exp_hospital_date: "2025-06 - Present",
+        exp_hospital_role: "Research Assistant",
+        exp_hospital_inst: "Second Affiliated Hospital of Dalian Medical University",
+        exp_hospital_detail: "Feng Zhang Group · Supervised by Zian Wang &amp; Xiaotao Zhang",
+        exp_lwang_date: "2023-10 - Present",
+        exp_lwang_role: "Research Assistant",
+        exp_lwang_inst: "Laboratory Animal Center, Dalian Medical University",
+        exp_lwang_detail: "Liang Wang Group",
+        education_heading: "Education",
+        education_item: '<span class="date">Present</span> <strong>Dalian Medical University</strong>, Undergraduate in Clinical Medicine.',
+        footer_updated: "Last updated: July 2026."
+      },
+      zh: {
+        documentTitle: "谢佳豪",
+        description: "谢佳豪的学术主页，大连医科大学临床医学本科生。",
+        toggleLabel: "English",
+        toggleAria: "Switch to English",
+        profile_role: "本科生<br>临床医学",
+        profile_school: "大连医科大学",
+        contact_heading: "联系方式",
+        contact_email: '邮箱：<a href="mailto:xjhdl@dmu.edu.cn">xjhdl@dmu.edu.cn</a>',
+        contact_github: 'GitHub：<a href="https://github.com/AxiEj" target="_blank" rel="noopener noreferrer">https://github.com/AxiEj</a>',
+        contact_orcid: 'ORCID：<a href="https://orcid.org/0009-0004-2387-7021" target="_blank" rel="noopener noreferrer">0009-0004-2387-7021</a>',
+        contact_scopus: "Scopus 作者 ID：59339900400",
+        nav_about: "简介",
+        nav_news: "动态",
+        nav_research: "研究方向",
+        nav_publications: "发表论文",
+        nav_experience: "经历",
+        nav_education: "教育背景",
+        about_heading: "简介",
+        about_p1: "我是谢佳豪，大连医科大学临床医学本科生。目前的学术兴趣集中在计算化学、生物信息学、分子建模与转化生物医学研究的交叉方向。",
+        about_p2: "我参与的工作包括分子动力学、量子化学、网络药理学、网络毒理学、孟德尔随机化、GBD 数据库分析、WGCNA、差异分析、KEGG/GO 富集分析、分子对接以及机器学习辅助靶点筛选。我也参与部分湿实验工作，包括细胞培养、换液、传代、冻存、QPCR、CCK8 实验，以及少量动物实验辅助工作。",
+        reader_note: "<strong>写给读者：</strong>我是本科生。坦诚地说，我不认为自己的思想深度、科研经验或实验操作能力高于正在阅读这份简介的您。感谢您的包涵；如果这个页面让您高看了我，我为由此造成的误解致歉。",
+        news_heading: "动态",
+        news_202607: '<span class="date">2026.07</span> 本独立学术主页已准备部署至 GitHub Pages。',
+        news_202512: '<span class="date">2025.12</span> 匹兹堡大学药学科学系科研实习生，参与 MAPLE 项目。',
+        news_202506: '<span class="date">2025.06</span> 大连医科大学附属第二医院科研助理。',
+        news_202310: '<span class="date">2023.10</span> 大连医科大学实验动物中心王亮课题组科研助理。',
+        research_heading: "研究方向",
+        research_intro: "我的研究目标是利用计算方法与生物医学数据分析形成可通过实验进一步评估的机制假设。",
+        research_computational: "<strong>计算化学：</strong>使用 GROMACS 进行分子动力学；使用 ORCA 和 Gaussian 开展量子化学流程；使用 Multiwfn、sobTop 和 Molclus 进行分子分析。",
+        research_bioinformatics: "<strong>生物信息学：</strong>网络药理学、网络毒理学、孟德尔随机化、GBD 数据库分析、WGCNA、差异分析、KEGG/GO 富集分析、分子对接以及机器学习辅助靶点筛选。",
+        research_experimental: "<strong>实验验证：</strong>细胞换液、传代、冻存、QPCR、CCK8 实验以及有限的动物实验辅助。",
+        research_computing: '<strong>科学计算：</strong>面向分子建模和计算化学实践的可复现流程，包括与 <a href="https://github.com/ClickFF/MAPLE" target="_blank" rel="noopener noreferrer">MAPLE</a> 相关的工作。',
+        publications_heading: "发表论文",
+        publications_research_heading: "同行评议原创研究论文",
+        publications_reviews_heading: "通信 / 评论 / 综述",
+        pub_cqd_title: "结合网络药理学、机器学习、分子对接和分子动力学探索除风清脾汤治疗血吸虫病的机制。",
+        pub_cqd_venue: "<em>Frontiers in Cellular and Infection Microbiology</em>, 2024-09-06.",
+        pub_cqd_authors: "贡献者：Minglu Liu; Yuxin Wang; Wen Deng; <strong>Jiahao Xie</strong>; Yanyao He; Liang Wang; Jianbin Zhang; Ming Cui.",
+        pub_cqd_note: "贡献：负责本文中的分子动力学模拟。",
+        pub_pnas_title: "通过微生物组修复调节肠上皮屏障及 tuft/goblet 细胞反应：机遇与未来方向。",
+        pub_pnas_venue: "<em>Proceedings of the National Academy of Sciences</em>, 2026-06-16.",
+        pub_pnas_authors: "贡献者：Zian Wang; <strong>Jiahao Xie</strong>; Shujing Liu; Mei Han; Liang Wang.",
+        pub_microbiota_title: "健康与疾病中的宿主—肠道微生物群相互作用：机制与干预策略。",
+        pub_microbiota_venue: "<em>Frontiers in Microbiology</em>, 2026-03-10.",
+        pub_microbiota_authors: "贡献者：Yu Han; Zian Wang; <strong>Jiahao Xie</strong>; Guangdi Yang; Monong Su; Siqi Wang; Mengxin Yang; Huiyang Yu; Minghua Li; Liang Wang et al.",
+        pub_hoxa9_title: "关于 HOXA9 通过激活 c-MYC-糖酵解-乳酸轴驱动胃癌淋巴转移的读者来信。",
+        pub_hoxa9_venue: "<em>Journal of Translational Medicine</em>, 2026-02-13.",
+        pub_hoxa9_authors: "贡献者：Xiaotao Zhang; Zian Wang; <strong>Jiahao Xie</strong>; Feng Zhang.",
+        pub_senovax_title: "致编辑：衰老细胞清除免疫疗法的临床转化：SenoVax™ 及其后续发展的关键考量。",
+        pub_senovax_venue: "<em>Journal of Translational Medicine</em>, 2026-02-13.",
+        pub_senovax_authors: "贡献者：<strong>Jiahao Xie</strong>; Zian Wang; Liang Wang; Ming Cui.",
+        pub_tgev_title: "猪传染性胃肠炎病毒破坏宿主先天免疫的机制。",
+        pub_tgev_venue: "<em>Frontiers in Immunology</em>, 2025-09-25.",
+        pub_tgev_authors: "贡献者：Zian Wang; <strong>Jiahao Xie</strong>; Qindan Li; Yiheng Liu; Xiaotao Zhang; Ergen Mi; Liang Wang; Lingyu Wang; Feng Zhang.",
+        pub_review_note: "贡献：负责机制图绘制和稿件返修。",
+        experience_heading: "经历",
+        exp_pitt_date: "2025-12 至今",
+        exp_pitt_role: "科研实习生",
+        exp_pitt_inst: "匹兹堡大学 · 药学科学系",
+        exp_pitt_detail: "由王栩剑博士指导（Junmei Wang 教授课题组）",
+        exp_hospital_date: "2025-06 至今",
+        exp_hospital_role: "科研助理",
+        exp_hospital_inst: "大连医科大学附属第二医院",
+        exp_hospital_detail: "张峰课题组 · 由王梓安与张晓陶指导",
+        exp_lwang_date: "2023-10 至今",
+        exp_lwang_role: "科研助理",
+        exp_lwang_inst: "大连医科大学实验动物中心",
+        exp_lwang_detail: "王亮课题组",
+        education_heading: "教育背景",
+        education_item: '<span class="date">至今</span> <strong>大连医科大学</strong>，临床医学本科。',
+        footer_updated: "最后更新：2026 年 7 月。"
+      }
+    };
+
+    const storageKey = "jiahao-xie-homepage-language";
+    const languageToggle = document.querySelector("[data-language-toggle]");
+
+    function applyLanguage(language) {
+      const current = translations[language] ? language : "en";
+      const dictionary = translations[current];
+      document.documentElement.lang = current === "zh" ? "zh-CN" : "en";
+      document.title = dictionary.documentTitle;
+      const description = document.querySelector('meta[name="description"]');
+      if (description) description.setAttribute("content", dictionary.description);
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+          element.innerHTML = dictionary[key];
+        }
+      });
+      languageToggle.textContent = dictionary.toggleLabel;
+      languageToggle.setAttribute("aria-label", dictionary.toggleAria);
+      languageToggle.setAttribute("data-language", current);
+      try {
+        localStorage.setItem(storageKey, current);
+      } catch (error) {
+        // Ignore storage failures; the button still works for the current page view.
+      }
+    }
+
+    function preferredLanguage() {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved && translations[saved]) return saved;
+      } catch (error) {
+        // Ignore storage failures and fall back to English.
+      }
+      return "en";
+    }
+
+    languageToggle.addEventListener("click", () => {
+      const nextLanguage = languageToggle.getAttribute("data-language") === "zh" ? "en" : "zh";
+      applyLanguage(nextLanguage);
+    });
+
+    applyLanguage(preferredLanguage());
+  </script>
 </body>
 </html>
