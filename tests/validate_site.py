@@ -48,22 +48,33 @@ def main():
         "if this page has led you to overestimate me, I apologize for the misunderstanding",
         "Email: xjhdl@dmu.edu.cn",
         "GitHub: https://github.com/AxiEj",
+        "Computational Chemistry Commune: Profile",
         "ORCID",
+        "Copper homeostasis and cuproptosis in tumor biology",
+        "Contribution: participated in figure preparation and manuscript revision.",
+        "Machine Learning Interatomic Potentials (MLIP):",
+        "Machine-learning Potential for Landscape Exploration (MAPLE)",
+        "the molecular dynamics (MD) component",
+        "integrating implicit solvent models into the platform",
     ]:
         assert required in visible_text, f"missing academic content: {required}"
 
     profile_start = html.index('<aside class="profile"')
     profile_end = html.index("</aside>", profile_start)
     profile_html = html[profile_start:profile_end]
-    for required in ["Contact", "Email:", "xjhdl@dmu.edu.cn", "GitHub:", "https://github.com/AxiEj", "ORCID:", "0009-0004-2387-7021"]:
+    for required in ["Contact", "Email:", "xjhdl@dmu.edu.cn", "GitHub:", "https://github.com/AxiEj", "Computational Chemistry Commune:", "http://bbs.keinsci.com/?64457", "ORCID:", "0009-0004-2387-7021"]:
         assert required in profile_html, f"left profile contact missing: {required}"
 
     forbidden = ["Gallery", "Music", "Quiz", "Mother", "Father", "heart failure", "心衰", "心力衰竭"]
     for word in forbidden:
         assert word not in body_text, f"non-academic/personal content leaked: {word}"
 
-    expected_news = "2025.12 Research Intern, University of Pittsburgh, Department of Pharmaceutical Sciences, participating in the MAPLE project."
-    assert expected_news in visible_text, f"missing MAPLE project note in news: {expected_news}"
+    expected_news = [
+        "2026.08 Our review on copper homeostasis and cuproptosis in tumor biology was published in Frontiers in Immunology",
+        "2025.12 Research Intern, University of Pittsburgh, Department of Pharmaceutical Sciences, participating in the Machine-learning Potential for Landscape Exploration (MAPLE) project.",
+    ]
+    for news_item in expected_news:
+        assert news_item in visible_text, f"missing publication or project note in news: {news_item}"
 
     required_markup = [
         '<button class="language-toggle"',
@@ -102,13 +113,23 @@ def main():
         "<strong>写给读者：</strong>",
         "同行评议原创研究论文",
         "通信 / 评论 / 综述",
-        "负责机制图绘制和稿件返修",
+        "参与作图、返修改稿",
+        "机器学习原子间势（MLIP）",
+        "Machine-learning Potential for Landscape Exploration（MAPLE）",
+        "计算化学公社",
+        "个人主页",
+        "负责分子动力学（MD）部分",
+        "隐式溶剂模型接入",
     ]
     for snippet in bilingual_requirements:
         assert snippet in html, f"missing bilingual language-toggle support: {snippet}"
+    assert "<strong>Scientific Computing:</strong>" not in html, "stale Scientific Computing label remains"
+    assert "<strong>科学计算：</strong>" not in html, "stale Chinese Scientific Computing label remains"
+    assert html.count('href="https://www.maplechem.org/"') == 6, "MAPLE homepage should link the project and website text in both language sources"
     assert "position: fixed" in css and ".language-toggle" in css, "language toggle should be fixed in the top-right corner"
 
     publications = [
+        ("Copper homeostasis and cuproptosis in tumor biology: mechanistic insights and clinical perspectives", "10.3389/fimmu.2026.1908734"),
         ("Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair: Opportunities and future directions", "10.1073/pnas.2535289123"),
         ("Host–gut microbiota interactions in health and disease: mechanisms and intervention strategies", "10.3389/fmicb.2026.1785607"),
         ("Letter regarding HOXA9 drives lymphatic metastasis by activating the c-MYC-glycolysis-lactate axis in gastric cancer", "10.1186/s12967-026-07822-x"),
@@ -132,6 +153,7 @@ def main():
     contribution_note = "Contribution: responsible for the molecular dynamics simulations in this study."
     assert original_position < publication_html.index(contribution_note) < correspondence_heading, "MD simulation contribution note must stay with the original research article"
     for title in [
+        "Copper homeostasis and cuproptosis in tumor biology",
         "Regulation of gut epithelial barrier and tuft/goblet cell responses by microbiome repair",
         "Host–gut microbiota interactions in health and disease",
         "Letter regarding HOXA9 drives lymphatic metastasis",
@@ -139,15 +161,17 @@ def main():
         "Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity",
     ]:
         assert correspondence_heading < publication_html.index(title), f"non-original publication must be in correspondence/review section: {title}"
-    review_note = "Contribution: responsible for mechanistic figure preparation and manuscript revision."
+    review_note = "Contribution: participated in figure preparation and manuscript revision."
     for title in [
+        "Copper homeostasis and cuproptosis in tumor biology",
         "Host–gut microbiota interactions in health and disease",
         "Mechanism by which porcine transmissible gastroenteritis virus disrupts host innate immunity",
     ]:
         title_position = publication_html.index(title)
         note_position = publication_html.index(review_note, title_position)
         assert title_position < note_position, f"mechanistic figure/revision contribution note must stay with: {title}"
-    assert publication_html.count(review_note) == 2, "two review articles should carry the mechanistic figure/revision contribution note"
+    assert publication_html.count(review_note) == 3, "three review articles should carry the figure/revision contribution note"
+    assert "responsible for mechanistic figure preparation" not in publication_html, "stale overclaiming contribution wording remains"
     assert publication_html.count('<ol class="publication-list">') == 2, "publication categories should use two separate lists"
 
     for required in [
